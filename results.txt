@@ -1,0 +1,114 @@
+Name: Kit Chung Yan
+Email: kyan@bu.edu
+Partners Name: Cory Castle
+Partners Email: ccastle@bu.edu
+
+
+puzzles with 5-move optimal solutions
+-------------------------------------
+algorithm                num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------
+random			10 puzzles	6.6 moves	223.7 states
+BFS			10 puzzles	47.1 states	47.1 states		
+DFS (depth limit 20)	10 puzzles	16.2 moves	19072.7 states 
+DFS (depth limit 50)	10 puzzles	48.2 moves	49043.0 states
+Greedy Search (h1) 	10 puzzles	12.8 moves	82.5 states
+A* (h1)			10 puzzles	5.0 moves	6.5 states
+
+puzzles with 10-move optimal solutions
+-------------------------------------
+algorithm                num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------
+random			6 puzzles	10.34 moves	975.17 states
+BFS			10 puzzles	10.0 moves	747.4 states
+DFS (depth limit 20)	10 puzzles	18.8 moves	24858.0 states
+DFS (depth limit 50)	10 puzzles	49.2 moves	92287.3 states
+Greedy Search (h1)	8 puzzles	83.25 moves	337.75 states
+A* (h1)			10 puzzles	10.0 moves	27.3 states
+
+
+puzzles with 15-move optimal solutions
+-------------------------------------
+algorithm                num. solved    avg. moves    avg. states tested
+------------------------------------------------------------------------
+random			2 puzzles	16.0 moves	5793.0 states
+BFS			10 puzzles	15.0 moves	12672.0 states
+DFS (depth limit 20)	10 puzzles	17.8 moves	68659.0 states
+DFS (depth limit 50)	7 puzzles	48.7 moves	26277.0 states
+Greedy Search (h1) 	5 puzzles	77.8 moves	1307.6 states
+A* (h1)			10 puzzles	15.0 moves	313.8 states
+
+In the first set of tables here, we can see how easy it is to solve the puzzles with just a 5 move set to reach the goal state. Based on the data in the table, 
+we can see that the DFS search method took the longest amount of time to compute compared to the rest of the algorithms tested for each digitstrings. Based on the results,
+we can see that the A* with H1 heuristics parameter was the most efficient one to produce the reliable optimal results for the puzzles. It uses the least minimum states
+and least minimum moves compared to the rest of the algorithms. We think it's because it gives a better priority to test on combining the number of moves made as
+well as the number of misplaced tiles. Whereas the Greedy searcher would focus on just the num of tiles misplaced but if there was the same amount of tiles misplaced
+but more closer to reaching the goal, it may not be able to distinguish that. Random seems to be least reliant algorithm because it chooses a random state to test 
+and that state may not even reach to the goal puzzle.
+
+
+
+
+heuristic h2
+------------
+This heuristic function will return the amount of moves it will be required for one tile to reach back to the location of the tile in the GOAL board. So if the
+tile is in the wrong row but right column, the move could be either up or down. If it's in the wrong row and column, it will calculate how many moves to reach back to
+the corresponding tile of the GOAL board.
+
+
+
+puzzles with 18-move optimal solutions
+--------------------------------------
+algorithm              num. solved    avg. moves    avg. states tested
+----------------------------------------------------------------------
+Greedy (heuristic h1)	4 puzzles     126.5 moves   541.75 states
+Greedy (heuristic h2)	10 puzzles    76.2 moves    725.7 states
+# Greedy with any other heuristics
+
+A* (heuristic h1)	10 puzzles      18.0 moves    1602.0 states
+A* (heuristic h2)	10 puzzles      18.0 moves    239.3 states
+# Greedy with any other heuristics
+
+puzzles with 21-move optimal solutions
+--------------------------------------
+algorithm              num. solved    avg. moves    avg. states tested
+----------------------------------------------------------------------
+Greedy (heuristic h1)	4 puzzles     118.0 moves   429.5 states
+Greedy (heuristic h2)   10 puzzles    75.4 moves    370.7 states
+# Greedy with any other heuristics
+
+A* (heuristic h1)	10 puzzles    21.0 moves    6301.7 states
+A* (heuristic h2)	10 puzzles    21.0 moves    482.3 states
+# Greedy with any other heuristics
+
+puzzles with 24-move optimal solutions
+--------------------------------------
+algorithm              num. solved    avg. moves    avg. states tested
+----------------------------------------------------------------------
+Greedy (heuristic h1)	6 puzzles     133.0 moves   2869.17 states
+Greedy (heuristic h2)   10 puzzles    75.2 moves    593.3 states
+# Greedy with any other heuristics
+
+A* (heuristic h1)	0 puzzles     0 moves        0 states
+A* (heuristic h2)	10 puzzles    24.0 moves     1065.5 states
+# Greedy with any other heuristics
+
+puzzles with 27-move optimal solutions
+--------------------------------------
+algorithm              num. solved    avg. moves    avg. states tested
+----------------------------------------------------------------------
+Greedy (heuristic h1)	4 puzzles     206.5 moves   4298.5 states
+Greedy (heuristic h2)   10 puzzles    90.8 moves    639.3 states
+# Greedy with any other heuristics
+
+A* (heuristic h1)	0 puzzles     0 moves       0 states
+A* (heuristic h2)	10 puzzles    27.0 moves    5043.3.0 states
+# Greedy with any other heuristics
+
+After we created our h2 heuristic, we found out that it was even more faster to compute all the digitstrings and it took less moves/states to do so compared to h1.
+The reason is because the h2 function helps narrow down the misplaced tiles even more by seeing whether or not that tile is in the right row/column. If it's not,
+it's going to add up the moves that will be needed to reach to the location of the correct position of that tiles. It also made it better with the A* algorithm because
+with the h1, it wasn't able to compute any puzzles back to reach the goal. Not only that, h2 was able to compute all the puzzles with 100% efficiency where as h1
+wasn't able to compute most of the puzzles while also taking a longer duration of time when it's able to be computed. We'd say that of all the search methods, A* is the
+best one to use in terms of reducing cost since this method was able to compute all of the puzzles with less time doing so. As a result, it would save the time and money
+when used.
